@@ -1,0 +1,40 @@
+@extends('layouts.main')
+@section('main-content')
+
+{{-- start sent otp  --}}
+
+<div class="row mt-5">
+    <div class="col-md-12">
+        <button type="button" class="btn btn-success" id="resend">Resend Otp</button>
+        <div id="timerDisplay" class="text-success">Timer: <span id="timer">00:30</span></div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $("#timerDisplay").hide();
+    let timer; // Variable to hold the timer interval
+    let seconds = 30;
+
+    // Function to start the countdown timer
+    function startTimer() {
+        timer = setInterval(function() {
+            seconds--;
+            if (seconds >= 0) {
+                $('#timer').text(('0' + seconds).slice(-2));
+                $("#timerDisplay").show();
+            } else {
+                clearInterval(timer); // Clear the timer interval when countdown reaches 0
+                $("#timerDisplay").hide();
+                $("#resend").show();
+            }
+        }, 1000); // Update every 1 second (1000 milliseconds)
+    }
+        $("#resend").click(function(){
+            $(this).hide();
+            $("#timerDisplay").show();
+            startTimer();
+        });
+    });
+</script>
+@endsection
