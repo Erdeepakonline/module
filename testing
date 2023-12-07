@@ -1,3 +1,16 @@
+  $.ajax({
+       		type:"get",
+         	url:"url",
+         	data:'',
+         	dataType:'json',
+         	success:function(res) {
+              $.each(res.data, function(i, row){
+                $("#messenger_type").append('<option value="'+row.id+'">'+row.value+'</option>');
+              });
+              $('#messenger_type').niceSelect('destroy');
+            $('#messenger_type').niceSelect();
+            }
+          })
 $('#messenger_type').niceSelect('destroy');
 $('#messenger_type').niceSelect();
 
