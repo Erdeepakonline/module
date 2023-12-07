@@ -1,0 +1,16 @@
+$('#messenger_type').niceSelect('destroy');
+$('#messenger_type').niceSelect();
+
+nice-select.css - 127 , 108 remove text-transform
+
+
+ $("#state,#phone_number,#messenger_name,#password,#confirm").keyup(function(){
+    $(this).val('');
+    $("#emailmsg").html('Please First Verify Email');
+    $("#email").focus();
+  });
+
+
+ $("#testbtn").click(function(){
+  $("#state,#phone_number,#messenger_name,#password,#confirm").off('keyup');
+ })
